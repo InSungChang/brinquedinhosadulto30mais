@@ -24,13 +24,13 @@ jobs:
         needs: build
         steps: 
             - name: Repo Checkout
-              uses: actions/checkout@v1
+              uses: actions/checkout@v3
             - name: Hostinger Deployment
               uses: easingthemes/ssh-deploy@main
               with:
                 SSH_PRIVATE_KEY: ${{secrets.SERVER_SSH_KEY}}
                 ARGS: "-rlgoDzvc --delete"
-                SOURCE: ""
+                SOURCE: "/"
                 REMOTE_HOST: ${{vars.REMOTE_HOST}}
                 REMOTE_USER: ${{vars.REMOTE_USER}}
                 REMOTE_PORT: ${{vars.REMOTE_PORT}}
@@ -45,7 +45,7 @@ jobs:
         needs: deploy-development
         steps: 
             - name: Repo Checkout
-              uses: actions/checkout@v1
+              uses: actions/checkout@v3
             - name: Hostinger Deployment
               uses: easingthemes/ssh-deploy@main
               with:
@@ -66,7 +66,7 @@ jobs:
         needs: deploy-staging
         steps: 
             - name: Repo Checkout
-              uses: actions/checkout@v1
+              uses: actions/checkout@v3
             - name: Hostinger Deployment
               uses: easingthemes/ssh-deploy@main
               with:
