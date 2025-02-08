@@ -25,8 +25,12 @@ jobs:
         steps: 
             - name: Repo Checkout
               uses: actions/checkout@v3
-            - name: Teste conexão SSH
-              run: ssh -v -i ~/.ssh/deploy_key_u907364100_1738968201884 -o StrictHostKeyChecking=no u907364100@147.93.37.136 -p 65002 "echo Conectado!"
+            - name: Configurar chave SSH
+              run: |
+                mkdir -p ~/.ssh
+                echo "${{ secrets.SERVER_SSH_KEY }}" > ~/.ssh/id_ed25519
+                chmod 600 ~/.ssh/id_ed25519
+                ssh-keyscan -p 65002 147.93.37.136 >> ~/.ssh/known_hosts            
 
             - name: Hostinger Deployment
               uses: easingthemes/ssh-deploy@main           
@@ -37,4 +41,4 @@ jobs:
                 REMOTE_HOST: ${{vars.REMOTE_HOST}}
                 REMOTE_USER: ${{vars.REMOTE_USER}}
                 REMOTE_PORT: ${{vars.REMOTE_PORT}}
-                TARGET: ${{vars.TARGET}}          
+                TARGET: ${{vars.TARGET}}       
