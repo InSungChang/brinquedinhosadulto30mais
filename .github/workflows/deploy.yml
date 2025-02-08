@@ -26,11 +26,8 @@ jobs:
             - name: Repo Checkout
               uses: actions/checkout@v3
             - name: Hostinger Deployment
-              uses: easingthemes/ssh-deploy@main
-            - name: Teste SSH manual
-              run: ssh -i ~/.ssh/deploy_key_u907364100_1738968201884 -o StrictHostKeyChecking=no u907364100@147.93.37.136 -p 65002 "echo Conectado!"
-              
-            with:
+              uses: easingthemes/ssh-deploy@main           
+              with:
                 SSH_PRIVATE_KEY: ${{secrets.SERVER_SSH_KEY}}
                 ARGS: "-rlgoDzvc --delete"
                 SOURCE: ""
@@ -39,4 +36,5 @@ jobs:
                 REMOTE_PORT: ${{vars.REMOTE_PORT}}
                 TARGET: ${{vars.TARGET}}
     
-    
+            - name: Teste SSH manual
+              run: ssh -i ~/.ssh/deploy_key_u907364100_1738968201884 -o StrictHostKeyChecking=no u907364100@147.93.37.136 -p 65002 "echo Conectado!"
