@@ -6,6 +6,10 @@ https://youtu.be/lfoYZ1tz33k?si=Gn2Uk8yAbt3c9ow0
 
 Ajustes para corrigir o problema de Github Actions
 
+Link onde foram feitas alterações com ajuda do IA
+https://chatgpt.com/share/67a7a1fd-9a94-800c-800b-e8e513d5277a
+
+Resumo:
 ### **🔧 Correções realizadas no `deploy.yml`**
 1️⃣ **Correção da configuração da chave SSH**  
    - Antes: O caminho da chave SSH estava incorreto (`~/.ssh/deploy_key_u907364100_1738968201884`).  
