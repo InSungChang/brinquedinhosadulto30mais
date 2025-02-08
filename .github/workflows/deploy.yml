@@ -14,4 +14,11 @@ jobs:
         steps:
           - name: Build
             run: echo Building the app
-            
+
+    # deploy desenvolvimento
+    deploy-development: 
+        runs-on: ubuntu-latest
+        environment:
+            name: development
+            url: ${{vars.URL}}
+        
