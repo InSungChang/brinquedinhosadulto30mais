@@ -21,4 +21,12 @@ jobs:
         environment:
             name: development
             url: ${{vars.URL}}
-        
+        needs: build
+        steps: 
+            - name: Repo Checkout
+              uses: actions/checkout@v3
+            - name: Hostinger Deployment
+              uses: easingthemes/ssh-deploy@main
+              
+    
+    
